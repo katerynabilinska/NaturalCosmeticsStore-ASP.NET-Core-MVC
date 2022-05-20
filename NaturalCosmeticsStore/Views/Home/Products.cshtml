@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Product>
+
+<div class="row my-5">
+    <h1 class="text-pink text-center mb-4">OUR PRODUCTS</h1>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th class="text-end">Price</th>
+            </tr>        
+        </thead>
+        <tbody>
+            @foreach(Product p in Model)
+            {
+                 <tr>
+                    <td>@p.Name</td>
+                    <td>@p.Description</td>
+                    <td class="text-end">@p.Price.ToString("c2")</td>
+                </tr>
+            }
+        </tbody>
+</table>
+</div>
