@@ -8,13 +8,31 @@ namespace NaturalCosmeticsStore.Controllers
         private readonly IProductRepository productRepository;
         public HomeController(IProductRepository productRepository)
             => this.productRepository = productRepository;
-        public IActionResult Index()
+        public IActionResult Index() => View();
+
+        public ViewResult Products() => View(productRepository.Products);
+
+        public ViewResult Edit(int productId) =>
+            View(productRepository.Products.FirstOrDefault(
+                p => p.Id == productId));
+
+        [HttpPost] 
+        public IActionResult Edit(Product product)
         {
-            return View();
+            productRepository.SaveProduct(product);
+            return RedirectToAction("Products");
         }
-        public ViewResult Products()
+
+        public ViewResult Create()
         {
-            return View(productRepository.Products);
+            return View("Edit", new Product());
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int productId)
+        {
+            productRepository.DeleteProduct(productId);
+            return RedirectToAction("Products");
         }
     }
 }

@@ -3,7 +3,7 @@ using NaturalCosmeticsStore.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IProductRepository, ProductRepository>();
+builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 

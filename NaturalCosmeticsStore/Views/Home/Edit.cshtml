@@ -1,0 +1,24 @@
+﻿@model Product
+@{
+    if(Model.Id==0) ViewData["Title"] = "Add Product";
+    else ViewData["Title"] = "Edit Product";
+}
+<div class="my-4">
+    @if(Model.Id==0)
+    {
+        <h1 class="text-pink text-center mb-4">ADD PRODUCT</h1>
+    }
+    else {<h1 class="text-pink text-center mb-4">EDIT PRODUCT</h1>}
+    <form method="post" asp-action="Edit">
+        <input type="hidden" asp-for="Id"/>
+        <input asp-for="Name" class="form-control my-1" placeholder="Name"/>
+        <textarea asp-for="Description" class="form-control my-1" 
+            placeholder="Description"></textarea>
+        <input asp-for="Price" class="form-control my-1" placeholder="Price"/>
+        <div class="text-center my-3">
+            <button class="btn btn-dark" type="submit">Save</button>
+            <a asp-action="Index" class="btn btn-dark" >Cancel</a>
+        </div>
+</form>
+</div>
+

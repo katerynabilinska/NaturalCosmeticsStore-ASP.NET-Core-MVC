@@ -8,6 +8,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th class="text-end">Price</th>
+                <th></th>
             </tr>        
         </thead>
         <tbody>
@@ -16,9 +17,25 @@
                  <tr>
                     <td>@p.Name</td>
                     <td>@p.Description</td>
-                    <td class="text-end">@p.Price.ToString("c2")</td>
+                    <td>@p.Price.ToString("c2")</td>
+                    <td>
+                        <a class="btn btn-dark" asp-action="Edit"
+                        asp-route-productId="@p.Id">Edit</a>
+                    </td>
+                    <td>
+                        <form asp-action="Delete" method="post">
+                            <input type="hidden" value="@p.Id" name="productId" />
+                            <button type="submit" class="btn btn-dark">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
                 </tr>
-            }
+            }          
         </tbody>
-</table>
+    </table>
+    <div class="text-center mb-4">
+        <a asp-action="Create" class="btn btn-dark">Add Product</a>
+    </div>
 </div>
+

@@ -20,3 +20,8 @@ body {
 .text-pink{
     color: hotpink;
 }
+
+.text-pink:hover {
+    color: hotpink;
+    opacity: .8;
+}
