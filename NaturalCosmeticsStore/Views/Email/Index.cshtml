@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Contacts Page";
+}
+
+<div class="m-4">
+    <h1 class="text-pink mb-4 text-center">HAVE SOME QUESTIONS?</h1>
+    <form method="post" asp-action="SendEmail" class="row">
+        <input name="userName" type="text" placeholder="Name" 
+            class="form-control my-2"/>
+        <input name="userEmail" type="email" placeholder="Email" 
+            class="form-control my-2"/>
+        <textarea name="userMessage" rows="5" placeholder="Message" 
+            class="form-control my-2"></textarea>
+        <div class="d-flex justify-content-center my-2">
+            <button class="btn btn-dark" type="submit">Send</button>
+        </div>        
+    </form>
+</div>
