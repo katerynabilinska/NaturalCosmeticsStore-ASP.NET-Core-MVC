@@ -4,41 +4,36 @@
 }
 
 <div class="row my-5">
-    <h1 class="text-pink text-center mb-4">OUR PRODUCTS</h1>
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th class="text-end">Price</th>
-                <th></th>
-            </tr>        
-        </thead>
-        <tbody>
-            @foreach(Product p in Model)
-            {
-                 <tr>
-                    <td>@p.Name</td>
-                    <td>@p.Description</td>
-                    <td>@p.Price.ToString("c2")</td>
-                    <td>
-                        <a class="btn btn-dark" asp-action="Edit"
-                        asp-route-productId="@p.Id">Edit</a>
-                    </td>
-                    <td>
-                        <form asp-action="Delete" method="post">
-                            <input type="hidden" value="@p.Id" name="productId" />
-                            <button type="submit" class="btn btn-dark">
-                                Delete
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            }          
-        </tbody>
-    </table>
-    <div class="text-center mb-4">
-        <a asp-action="Create" class="btn btn-dark">Add Product</a>
+    <div class="d-flex justify-content-between align-items-center align-content-center">        
+        <h1 class="text-pink mb-4">OUR PRODUCTS</h1> 
+        <div class="text-center mb-4">
+            <a asp-action="Create" class="btn btn-dark bg-pink border-0 py-2 px-4">
+                <h5>Add Product</h5>
+            </a>
+        </div>
+    </div>    
+    <div class="row d-flex justify-content-center mb-5">
+        @foreach(Product p in Model)
+        {
+            <div class="card col-3 m-3 p-3">
+                <h5 class="card-title">@p.Name</h5>
+                <p class="card-text">@p.Description</p>
+                <h6 class="card-text text-pink">@p.Price.ToString("c2")</h6>
+                <div class="d-flex justify-content-end">
+                    <a class="btn btn-dark me-3" asp-action="Edit" asp-route-productId="@p.Id">
+                        Edit
+                    </a>
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" value="@p.Id" name="productId" />
+                        <button type="submit" class="btn btn-dark">
+                            Delete
+                        </button>
+                    </form>
+                </div>
+                
+            </div>
+        }
     </div>
+    
 </div>
 

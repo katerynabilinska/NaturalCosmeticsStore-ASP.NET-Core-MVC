@@ -25,3 +25,7 @@ body {
     color: hotpink;
     opacity: .8;
 }
+
+.bg-pink {
+    background-color: hotpink;
+}
