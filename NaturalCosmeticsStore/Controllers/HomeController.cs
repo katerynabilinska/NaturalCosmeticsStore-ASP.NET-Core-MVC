@@ -8,6 +8,7 @@ namespace NaturalCosmeticsStore.Controllers
         private readonly IProductRepository productRepository;
         public HomeController(IProductRepository productRepository)
             => this.productRepository = productRepository;
+
         public IActionResult Index() => View();
 
         public ViewResult Products() => View(productRepository.Products);
